@@ -112,6 +112,17 @@ main { min-height: 100vh; margin-left: 268px; padding: 58px clamp(28px, 5vw, 76p
 .empty-glyph { display: block; margin-bottom: 14px; color: var(--ember); font-size: 42px; }
 .welcome { padding-top: 13vh !important; border: 0 !important; background: radial-gradient(circle at 50% 20%, #64351c26, transparent 45%) !important; }
 .welcome .text-button { display: block; margin: 15px auto; }
+.preset-toolbar { display: flex; max-width: 1160px; flex-wrap: wrap; gap: 7px; margin: 0 auto 16px; }
+.preset-grid { display: grid; max-width: 1160px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 auto; }
+.preset-card { display: flex; min-width: 0; flex-direction: column; gap: 16px; border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: var(--panel); }
+.preset-card h2 { margin: 10px 0 6px; color: var(--cream); font-family: 'Fraunces', Georgia, serif; font-size: 21px; }
+.preset-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+.preset-card ul { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; }
+.preset-card li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); padding: 7px 0; color: #d2c8bd; font-size: 10px; }
+.preset-card li span, .preset-card > small, .preset-source { color: var(--faint); font-size: 9px; }
+.preset-card footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: auto; }
+.preset-card footer div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.source-note { max-width: 1160px; margin: 16px auto 0; color: var(--faint); font-size: 9px; line-height: 1.5; }
 .catalogue-tools { display: grid; max-width: 1160px; grid-template-columns: minmax(220px, 1fr) 190px 150px auto; gap: 9px; margin: 0 auto; }
 input, textarea, select { width: 100%; border: 1px solid var(--line); border-radius: 7px; padding: 9px 10px; color: var(--cream); background: #171411; }
 input::placeholder, textarea::placeholder { color: #625a53; }
@@ -191,6 +202,7 @@ label input, label textarea, label select { display: block; margin-top: 6px; fon
 @media (max-width: 1080px) {
   .paint-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .recipe-grid { grid-template-columns: 1fr; }
+  .preset-grid { grid-template-columns: 1fr; }
   .catalogue-tools { grid-template-columns: 1fr 1fr; }
 }
 @supports (-webkit-touch-callout: none) {
@@ -210,6 +222,9 @@ label input, label textarea, label select { display: block; margin-top: 6px; fon
   .summary-strip { grid-template-columns: 1fr; }
   .summary-strip div { border-right: 0; border-bottom: 1px solid var(--line); }
   .paint-grid { grid-template-columns: 1fr; }
+  .preset-card footer { align-items: stretch; flex-direction: column; }
+  .preset-card footer div { justify-content: stretch; }
+  .preset-card footer .button { flex: 1; }
   .catalogue-tools { grid-template-columns: 1fr; }
   .editor-grid { grid-template-columns: 1fr; }
   .step-details { grid-template-columns: 1fr; }

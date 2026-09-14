@@ -3,8 +3,9 @@ import { deltaE2000, hexToLab } from './color'
 import { loadPaints, normaliseSearch, paintLabel } from './data'
 import { createRecipe, createScheme, loadWorkspace, normalizeWorkspace, saveWorkspace, slugify, uid } from './storage'
 import { TECHNIQUES, type Paint, type PaintRef, type Recipe, type RecipeStep, type Scheme, type Toast, type Workspace } from './types'
+import { instantiatePreset, SCHEME_PRESETS, type SchemePreset } from './presets'
 
-type View = 'schemes' | 'catalogue' | 'inventory'
+type View = 'schemes' | 'presets' | 'catalogue' | 'inventory'
 
 const techniqueName = (id: string) => TECHNIQUES.find(([key]) => key === id)?.[1] ?? id.replaceAll('-', ' ')
 const paintRef = (paint: Paint): PaintRef => ({
@@ -278,6 +279,24 @@ function Catalogue({ paints, owned, mode, onToggle }: { paints: Paint[]; owned: 
   )
 }
 
+function PresetLibrary({ onAdd }: { onAdd: (preset: SchemePreset, addPaints: boolean) => void }) {
+  const [category, setCategory] = useState<'all' | SchemePreset['category']>('all')
+  const shown = SCHEME_PRESETS.filter((preset) => category === 'all' || preset.category === category)
+  return <>
+    <header className="workspace-head"><div><span className="eyebrow">Guided recipes</span><h1>Squidmar presets</h1><p>Ready-to-use recipes built around the Essential, Dark Future and Fantasy sets. Add one as an editable scheme.</p></div></header>
+    <section className="preset-toolbar" aria-label="Preset filters">
+      {(['all', 'Material library', 'Chaos Space Marines'] as const).map((item) => <button key={item} className={`button small ${category === item ? 'primary' : 'secondary'}`} onClick={() => setCategory(item)}>{item === 'all' ? 'All presets' : item}</button>)}
+    </section>
+    <div className="preset-grid">{shown.map((preset) => <article className="preset-card" key={preset.id}>
+      <div><span className="pill accent">{preset.category}</span><h2>{preset.name}</h2><p>{preset.description}</p></div>
+      <ul>{preset.recipes.slice(0, 5).map((item) => <li key={item.name}>{item.name}<span>{item.part}</span></li>)}</ul>
+      {preset.recipes.length > 5 && <small>+ {preset.recipes.length - 5} more recipes</small>}
+      <footer><span className="preset-source">{preset.source}</span><div><button className="button secondary small" onClick={() => onAdd(preset, false)}>Add scheme</button><button className="button primary small" onClick={() => onAdd(preset, true)}>Add + mark paints owned</button></div></footer>
+    </article>)}</div>
+    <p className="source-note">Video-based recipes follow Squidmar’s stated mixes. Faction presets are practical adaptations of those methods, not official Vallejo or Games Workshop painting guides.</p>
+  </>
+}
+
 export function App() {
   const [workspace, setWorkspace] = useState<Workspace>(loadWorkspace)
   const [paints, setPaints] = useState<Paint[]>([])
@@ -340,6 +359,7 @@ export function App() {
         <div className="brand"><span className="brand-mark">◇</span><div><strong>Schemeforge</strong><small>Miniature paint planner</small></div><button className="mobile-close" onClick={() => document.querySelector('.sidebar')?.classList.remove('open')} aria-label="Close navigation">×</button></div>
         <nav className="main-nav" aria-label="Workspace">
           <button className={view === 'schemes' ? 'active' : ''} onClick={() => { setView('schemes'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>◇</Icon>Schemes<span>{workspace.schemes.length}</span></button>
+          <button className={view === 'presets' ? 'active' : ''} onClick={() => { setView('presets'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>✦</Icon>Recipe presets<span>{SCHEME_PRESETS.length}</span></button>
           <button className={view === 'catalogue' ? 'active' : ''} onClick={() => { setView('catalogue'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>▦</Icon>Paint library<span>{paints.length || '…'}</span></button>
           <button className={view === 'inventory' ? 'active' : ''} onClick={() => { setView('inventory'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>✓</Icon>My paints<span>{owned.size}</span></button>
         </nav>
@@ -354,7 +374,11 @@ export function App() {
             update((current) => ({ ...current, schemes: current.schemes.filter((item) => item.id !== selected.id), recipes: current.recipes.map((recipe) => recipe.schemeId === selected.id ? { ...recipe, schemeId: undefined } : recipe) }))
             setToast({ message: 'Scheme deleted; its recipes are now shared.' })
           }} />
-        ) : <div className="empty welcome"><span className="empty-glyph">◇</span><span className="eyebrow">A clearer painting workflow</span><h1>Turn a colour idea into repeatable steps.</h1><p>Create a scheme, divide it into model areas and attach exact paints from the catalogue. Everything stays private in your browser.</p><button className="button primary" onClick={() => setNewSchemeOpen(true)}>Create your first scheme</button><button className="text-button" onClick={() => importRef.current?.click()}>or import a 40k Companion backup</button></div> : <Catalogue paints={paints} owned={owned} mode={view} onToggle={(id) => update((current) => ({ ...current, ownedPaintIds: current.ownedPaintIds.includes(id) ? current.ownedPaintIds.filter((item) => item !== id) : [...current.ownedPaintIds, id] }))} />}
+        ) : <div className="empty welcome"><span className="empty-glyph">◇</span><span className="eyebrow">A clearer painting workflow</span><h1>Turn a colour idea into repeatable steps.</h1><p>Create a scheme, divide it into model areas and attach exact paints from the catalogue. Everything stays private in your browser.</p><button className="button primary" onClick={() => setNewSchemeOpen(true)}>Create your first scheme</button><button className="text-button" onClick={() => setView('presets')}>or start from a guided preset</button></div> : view === 'presets' ? <PresetLibrary onAdd={(preset, addPaints) => {
+          const made = instantiatePreset(preset, paints)
+          update((current) => ({ ...current, schemes: [...current.schemes, made.scheme], recipes: [...current.recipes, ...made.recipes], ownedPaintIds: addPaints ? [...new Set([...current.ownedPaintIds, ...made.paintIds])] : current.ownedPaintIds }))
+          setSelectedId(made.scheme.id); setView('schemes'); setToast({ message: `Added “${preset.name}” with ${made.recipes.length} recipes.` })
+        }} /> : <Catalogue paints={paints} owned={owned} mode={view} onToggle={(id) => update((current) => ({ ...current, ownedPaintIds: current.ownedPaintIds.includes(id) ? current.ownedPaintIds.filter((item) => item !== id) : [...current.ownedPaintIds, id] }))} />}
       </main>
       <button className="mobile-menu" onClick={() => document.querySelector('.sidebar')?.classList.toggle('open')} aria-label="Toggle navigation">☰</button>
       {newSchemeOpen && <NewScheme onClose={() => setNewSchemeOpen(false)} onCreate={(name, notes) => { const next = createScheme(name, notes); update((current) => ({ ...current, schemes: [...current.schemes, next] })); setSelectedId(next.id); setView('schemes'); setNewSchemeOpen(false) }} />}
