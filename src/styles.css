@@ -19,7 +19,10 @@
   --danger: #e06c75;
 }
 * { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--bg); }
+html, body, #root { width: 100%; min-height: 100%; max-width: 100%; overflow-x: clip; }
+html { background: var(--bg); overscroll-behavior: none; }
+body { margin: 0; min-width: 320px; min-height: 100vh; min-height: 100dvh; background: var(--bg); overscroll-behavior: none; -webkit-text-size-adjust: 100%; }
+#root, .app-shell { min-height: 100vh; min-height: 100dvh; overflow-x: clip; }
 button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
 button:disabled { cursor: not-allowed; opacity: .35; }
@@ -129,7 +132,7 @@ select { appearance: auto; }
 .own-button { border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; color: var(--muted); background: transparent; font-size: 9px; }
 .own-button:hover { border-color: var(--ember); color: var(--cream); }
 .own-button.owned { border-color: #526341; color: #b4ca9b; background: #5263412b; }
-.modal-backdrop { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 20px; background: #090706d9; backdrop-filter: blur(5px); }
+.modal-backdrop { position: fixed; width: 100vw; height: 100dvh; overflow: hidden; z-index: 100; inset: 0; display: grid; place-items: center; padding: 20px; background: #090706d9; backdrop-filter: blur(5px); }
 .modal { width: min(520px, 100%); max-height: calc(100vh - 40px); overflow: auto; border: 1px solid #493d33; border-radius: 13px; background: #211d19; box-shadow: 0 30px 100px #000b; }
 .modal-wide { width: min(880px, 100%); }
 .modal-header { position: sticky; z-index: 3; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 17px 20px; border-bottom: 1px solid var(--line); background: #211d19ee; backdrop-filter: blur(10px); }
@@ -222,6 +225,6 @@ label input, label textarea, label select { display: block; margin-top: 6px; fon
   .picker-tools { grid-template-columns: 1fr; }
   .paint-picker-list { grid-template-columns: 1fr; }
   .modal-backdrop { align-items: end; padding: 0; }
-  .modal { width: 100%; max-height: 94vh; border-radius: 14px 14px 0 0; }
+  .modal { width: 100%; max-height: 94dvh; border-radius: 14px 14px 0 0; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }

@@ -1,0 +1,21 @@
+{
+  "name": "Schemeforge – Miniature Paint Planner",
+  "short_name": "Schemeforge",
+  "description": "Build clear, repeatable miniature painting schemes.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#171411",
+  "theme_color": "#17120f",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
