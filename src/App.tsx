@@ -329,13 +329,13 @@ export function App() {
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <div className="brand"><span className="brand-mark">◇</span><div><strong>Schemeforge</strong><small>Miniature paint planner</small></div></div>
+        <div className="brand"><span className="brand-mark">◇</span><div><strong>Schemeforge</strong><small>Miniature paint planner</small></div><button className="mobile-close" onClick={() => document.querySelector('.sidebar')?.classList.remove('open')} aria-label="Close navigation">×</button></div>
         <nav className="main-nav" aria-label="Workspace">
-          <button className={view === 'schemes' ? 'active' : ''} onClick={() => setView('schemes')}><Icon>◇</Icon>Schemes<span>{workspace.schemes.length}</span></button>
-          <button className={view === 'catalogue' ? 'active' : ''} onClick={() => setView('catalogue')}><Icon>▦</Icon>Paint library<span>{paints.length || '…'}</span></button>
-          <button className={view === 'inventory' ? 'active' : ''} onClick={() => setView('inventory')}><Icon>✓</Icon>My paints<span>{owned.size}</span></button>
+          <button className={view === 'schemes' ? 'active' : ''} onClick={() => { setView('schemes'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>◇</Icon>Schemes<span>{workspace.schemes.length}</span></button>
+          <button className={view === 'catalogue' ? 'active' : ''} onClick={() => { setView('catalogue'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>▦</Icon>Paint library<span>{paints.length || '…'}</span></button>
+          <button className={view === 'inventory' ? 'active' : ''} onClick={() => { setView('inventory'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>✓</Icon>My paints<span>{owned.size}</span></button>
         </nav>
-        {view === 'schemes' && <div className="scheme-nav"><div className="nav-label"><span>Your schemes</span><button onClick={() => setNewSchemeOpen(true)} aria-label="New scheme">＋</button></div>{workspace.schemes.map((scheme) => <button className={scheme.id === selectedId ? 'active' : ''} key={scheme.id} onClick={() => setSelectedId(scheme.id)}><span className="scheme-dot" />{scheme.name}<small>{workspace.recipes.filter((recipe) => recipe.schemeId === scheme.id).length}</small></button>)}{!workspace.schemes.length && <p>No schemes yet.</p>}</div>}
+        {view === 'schemes' && <div className="scheme-nav"><div className="nav-label"><span>Your schemes</span><button onClick={() => setNewSchemeOpen(true)} aria-label="New scheme">＋</button></div>{workspace.schemes.map((scheme) => <button className={scheme.id === selectedId ? 'active' : ''} key={scheme.id} onClick={() => { setSelectedId(scheme.id); document.querySelector('.sidebar')?.classList.remove('open') }}><span className="scheme-dot" />{scheme.name}<small>{workspace.recipes.filter((recipe) => recipe.schemeId === scheme.id).length}</small></button>)}{!workspace.schemes.length && <p>No schemes yet.</p>}</div>}
         <div className="sidebar-bottom"><button onClick={exportData}>Export</button><button onClick={() => importRef.current?.click()}>Import</button><input ref={importRef} type="file" accept="application/json,.json" hidden onChange={importFile} /><p>Stored only in this browser</p></div>
       </aside>
       <main>
