@@ -45,6 +45,7 @@ function scheme(value: any): Scheme | null {
     id: typeof value.id === 'string' ? value.id : uid(),
     slug: typeof value.slug === 'string' ? value.slug : slugify(value.name),
     name: value.name.trim() || 'Untitled scheme',
+    modelId: typeof value.modelId === 'string' ? value.modelId : undefined,
     notes: typeof value.notes === 'string' ? value.notes : undefined,
     createdAt: typeof value.createdAt === 'string' ? value.createdAt : stamp,
     updatedAt: typeof value.updatedAt === 'string' ? value.updatedAt : stamp,
