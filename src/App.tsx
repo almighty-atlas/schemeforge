@@ -25,8 +25,16 @@ function Icon({ children }: { children: ReactNode }) {
 function Modal({ title, children, onClose, wide = false }: { title: string; children: ReactNode; onClose: () => void; wide?: boolean }) {
   useEffect(() => {
     const close = (event: KeyboardEvent) => event.key === 'Escape' && onClose()
+    const bodyOverflow = document.body.style.overflow
+    const rootOverflow = document.documentElement.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
     window.addEventListener('keydown', close)
-    return () => window.removeEventListener('keydown', close)
+    return () => {
+      window.removeEventListener('keydown', close)
+      document.body.style.overflow = bodyOverflow
+      document.documentElement.style.overflow = rootOverflow
+    }
   }, [onClose])
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
