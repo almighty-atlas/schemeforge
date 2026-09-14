@@ -75,7 +75,7 @@ export function normalizeWorkspace(value: any): Workspace {
     .map(scheme).filter((item: Scheme | null): item is Scheme => item !== null)
   const recipes = (Array.isArray(value.recipes) ? value.recipes : [])
     .map(recipe).filter((item: Recipe | null): item is Recipe => item !== null)
-  const paintIds = Array.isArray(value.ownedPaintIds)
+  const paintIds: unknown[] = Array.isArray(value.ownedPaintIds)
     ? value.ownedPaintIds
     : Array.isArray(value.paintIds)
       ? value.paintIds
@@ -86,7 +86,7 @@ export function normalizeWorkspace(value: any): Workspace {
     version: 1,
     schemes,
     recipes,
-    ownedPaintIds: [...new Set(paintIds.filter((id: unknown): id is string => typeof id === 'string'))],
+    ownedPaintIds: [...new Set<string>(paintIds.filter((id): id is string => typeof id === 'string'))],
   }
 }
 
