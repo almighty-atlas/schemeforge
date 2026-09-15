@@ -13,17 +13,17 @@ Status reviewed on 2026-09-15 against the official Warhammer 40,000 army overvie
 - [x] Adeptus Mechanicus — cybernetic ranger
 - [x] Grey Knights — psychic silver knight
 - [x] Imperial Agents — armoured field agent
-- [ ] Imperial Knights
+- [x] Imperial Knights — noble combat walker
 
 Chapter-specific Space Marine schemes can reuse the Space Marine artwork initially. Distinct chapter units may be added after the primary-faction pass.
 
 ## Chaos
 
 - [x] Chaos Space Marines — several archetypes available
-- [ ] Chaos Daemons
-- [ ] Chaos Knights
-- [ ] Death Guard
-- [ ] Emperor's Children
+- [x] Chaos Daemons — lesser warp creature
+- [x] Chaos Knights — corrupted combat walker
+- [x] Death Guard — plague-corrupted heavy infantry
+- [x] Emperor's Children — sonic legionary
 - [ ] Thousand Sons
 - [ ] World Eaters
 

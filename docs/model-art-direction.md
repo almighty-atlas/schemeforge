@@ -32,6 +32,11 @@ The first approved visual reference is `public/models/chaos-legionary.webp`.
 - `adeptus-mechanicus.webp` — hooded cybernetic ranger
 - `grey-knight.webp` — disciplined psychic silver knight
 - `imperial-agent.webp` — armoured field investigator
+- `imperial-knight.webp` — noble heraldic combat walker
+- `chaos-daemon.webp` — horned lesser warp creature
+- `chaos-knight.webp` — corrupted asymmetric combat walker
+- `death-guard.webp` — plague-corrupted heavy infantry
+- `emperors-children.webp` — decadent sonic legionary
 
 New artwork should feel like another plate from this same illustrated field guide. Reuse the baseline image as the generation style reference; vary silhouette, pose, equipment and material balance to fit the archetype.
 
