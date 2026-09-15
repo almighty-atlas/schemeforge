@@ -27,6 +27,11 @@ The first approved visual reference is `public/models/chaos-legionary.webp`.
 - `ork-raider.webp` — hulking alien scrap-raider
 - `necron-warrior.webp` — ancient skeletal machine
 - `tyranid-warrior.webp` — chitinous swarm creature
+- `adepta-sororitas.webp` — gothic battle sister
+- `adeptus-custodes.webp` — towering ceremonial guardian
+- `adeptus-mechanicus.webp` — hooded cybernetic ranger
+- `grey-knight.webp` — disciplined psychic silver knight
+- `imperial-agent.webp` — armoured field investigator
 
 New artwork should feel like another plate from this same illustrated field guide. Reuse the baseline image as the generation style reference; vary silhouette, pose, equipment and material balance to fit the archetype.
 
