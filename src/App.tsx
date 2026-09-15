@@ -284,10 +284,11 @@ function Catalogue({ paints, owned, mode, onToggle }: { paints: Paint[]; owned: 
 function PresetLibrary({ onAdd }: { onAdd: (preset: SchemePreset, addPaints: boolean) => void }) {
   const [category, setCategory] = useState<'all' | SchemePreset['category']>('all')
   const shown = SCHEME_PRESETS.filter((preset) => category === 'all' || preset.category === category)
+  const categories: Array<'all' | SchemePreset['category']> = ['all', ...new Set(SCHEME_PRESETS.map((preset) => preset.category))]
   return <>
     <header className="workspace-head"><div><span className="eyebrow">Guided recipes</span><h1>Squidmar presets</h1><p>Ready-to-use recipes built around the Essential, Dark Future and Fantasy sets. Add one as an editable scheme.</p></div></header>
     <section className="preset-toolbar" aria-label="Preset filters">
-      {(['all', 'Material library', 'Chaos Space Marines'] as const).map((item) => <button key={item} className={`button small ${category === item ? 'primary' : 'secondary'}`} onClick={() => setCategory(item)}>{item === 'all' ? 'All presets' : item}</button>)}
+      {categories.map((item) => <button key={item} className={`button small ${category === item ? 'primary' : 'secondary'}`} onClick={() => setCategory(item)}>{item === 'all' ? 'All presets' : item}</button>)}
     </section>
     <div className="preset-grid">{shown.map((preset) => <article className="preset-card" key={preset.id}>
       <div><span className="pill accent">{preset.category}</span><h2>{preset.name}</h2><p>{preset.description}</p></div>
