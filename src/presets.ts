@@ -8,6 +8,7 @@ export interface SchemePreset {
   id: string
   name: string
   modelId?: string
+  faction?: string
   category: 'Material library' | 'Imperium' | 'Chaos' | 'Xenos'
   description: string
   source: 'Squidmar video' | 'Derived from Squidmar method'
@@ -35,7 +36,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'csm-word-bearers', name: 'Word Bearers warband', modelId: 'chaos-legionary', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'csm-word-bearers', name: 'Word Bearers warband', modelId: 'chaos-legionary', faction: 'Chaos Space Marines', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Deep crimson armour, cold steel trim, parchment and ritual details using only the three owned sets.',
     recipes: [
       recipe('Crimson power armour', 'Armour', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('edge-highlight', [['72.106', 2], ['70.928', 1]], 'Fine upper edges'), step('glaze', [['70.812']], 'Thin into selected shadows for a colder, richer crimson', true)]),
@@ -46,7 +47,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'csm-night-lords', name: 'Nemesis Claw · Night Lords', modelId: 'terror-warrior', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'csm-night-lords', name: 'Nemesis Claw · Night Lords', modelId: 'terror-warrior', faction: 'Chaos Space Marines', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Cold midnight armour, bright steel and warm trophies tailored to the Nemesis Claw aesthetic.',
     recipes: [
       recipe('Midnight blue armour', 'Armour', [step('basecoat', [['70.898']]), step('layer', [['70.898', 3], ['72.024', 1]], 'Broad upper volumes'), step('layer', [['72.024']]), step('edge-highlight', [['70.808']]), step('detail', [['70.858']], 'Sparse brightest corners')]),
@@ -57,7 +58,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'csm-black-legion', name: 'Black Legion strike force', modelId: 'chaos-terminator', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'csm-black-legion', name: 'Black Legion strike force', modelId: 'chaos-terminator', faction: 'Chaos Space Marines', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Controlled black armour, warm gold trim and vivid red details with a compact shared palette.',
     recipes: [
       recipe('Black power armour', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 4], ['70.986', 1]], 'Selective upper volumes'), step('edge-highlight', [['70.950', 1], ['70.986', 1]], 'Keep lines thin'), step('detail', [['70.986']], 'Only the sharpest corners', true)]),
@@ -68,7 +69,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'csm-dark-apostle', name: 'Dark Apostle', modelId: 'dark-apostle', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'csm-dark-apostle', name: 'Dark Apostle', modelId: 'dark-apostle', faction: 'Chaos Space Marines', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Black and crimson ritual armour with aged parchment, warm leather and vivid arcane details.',
     recipes: [
       recipe('Black ritual armour', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 4], ['70.986', 1]]), step('edge-highlight', [['70.986']], 'Only the sharpest upper edges')]),
@@ -81,7 +82,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'csm-chaos-cultist', name: 'Chaos Cultist', modelId: 'chaos-cultist', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'csm-chaos-cultist', name: 'Chaos Cultist', modelId: 'chaos-cultist', faction: 'Chaos Space Marines', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Worn industrial cloth, pale skin and battered metal for a fast but expressive rank-and-file scheme.',
     recipes: [
       recipe('Pale weathered skin', 'Skin', [step('basecoat', [['70.814', 1], ['70.845', 1]]), step('layer', [['70.845']]), step('edge-highlight', [['70.928']])]),
@@ -93,7 +94,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'csm-terror-warrior', name: 'Terror Warrior', modelId: 'terror-warrior', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'csm-terror-warrior', name: 'Terror Warrior', modelId: 'terror-warrior', faction: 'Chaos Space Marines', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Predatory midnight armour, cold claws and unsettling pale trophies built for the original terror-warrior artwork.',
     recipes: [
       recipe('Midnight armour', 'Armour', [step('basecoat', [['70.898']]), step('layer', [['70.898', 3], ['72.024', 1]]), step('edge-highlight', [['70.808']])]),
@@ -105,7 +106,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'csm-possessed', name: 'Possessed Warrior', modelId: 'possessed', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'csm-possessed', name: 'Possessed Warrior', modelId: 'possessed', faction: 'Chaos Space Marines', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Dark armour split by raw daemonic flesh, ivory growths and a restrained crimson accent.',
     recipes: [
       recipe('Blackened armour', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 4], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
@@ -117,7 +118,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'csm-chaos-terminator', name: 'Chaos Terminator', modelId: 'chaos-terminator', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'csm-chaos-terminator', name: 'Chaos Terminator', modelId: 'chaos-terminator', faction: 'Chaos Space Marines', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Heavy black plate, rich gold trim and brutal steel weapons for an imposing veteran.',
     recipes: [
       recipe('Obsidian heavy armour', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 4], ['70.986', 1]]), step('edge-highlight', [['70.986']], 'Keep most plates near black')]),
@@ -130,7 +131,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'imperium-space-marines', name: 'Salamanders Space Marine', modelId: 'space-marine', category: 'Imperium', source: 'Derived from Squidmar method',
+    id: 'imperium-space-marines', name: 'Salamanders Space Marine', modelId: 'space-marine', faction: 'Space Marines', category: 'Imperium', source: 'Derived from Squidmar method',
     description: 'Deep green armour, black weapon casing and restrained warm metal inspired by the Salamanders palette.',
     recipes: [
       recipe('Deep green power armour', 'Armour', [step('basecoat', [['72.028']]), step('layer', [['70.891']]), step('edge-highlight', [['72.030']]), step('detail', [['72.030', 1], ['70.858', 1]], 'Small brightest corners')]),
@@ -142,7 +143,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'imperium-astra-militarum', name: 'Astra Militarum Trooper', modelId: 'astra-militarum', category: 'Imperium', source: 'Derived from Squidmar method',
+    id: 'imperium-astra-militarum', name: 'Astra Militarum Trooper', modelId: 'astra-militarum', faction: 'Astra Militarum', category: 'Imperium', source: 'Derived from Squidmar method',
     description: 'Muted olive armour, dusty trench coat and practical leather for a weathered frontline infantry scheme.',
     recipes: [
       recipe('Olive armour plates', 'Armour', [step('basecoat', [['70.894']]), step('layer', [['70.891']]), step('edge-highlight', [['72.030', 2], ['70.858', 1]])]),
@@ -154,7 +155,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'xenos-orks', name: 'Ork Raider', modelId: 'ork-raider', category: 'Xenos', source: 'Derived from Squidmar method',
+    id: 'xenos-orks', name: 'Ork Raider', modelId: 'ork-raider', faction: 'Orks', category: 'Xenos', source: 'Derived from Squidmar method',
     description: 'Layered green skin, rusty scrap plate and battered red accents for a brutal Ork infantry scheme.',
     recipes: [
       recipe('Ork green skin', 'Skin', [step('basecoat', [['72.028']]), step('layer', [['70.891']]), step('layer', [['72.030']]), step('edge-highlight', [['72.030', 2], ['70.858', 1]])]),
@@ -166,7 +167,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'xenos-necrons', name: 'Necron Warrior', modelId: 'necron-warrior', category: 'Xenos', source: 'Derived from Squidmar method',
+    id: 'xenos-necrons', name: 'Necron Warrior', modelId: 'necron-warrior', faction: 'Necrons', category: 'Xenos', source: 'Derived from Squidmar method',
     description: 'Cold ancient metal, blackened armour shells and turquoise energy for an awakened machine dynasty.',
     recipes: [
       recipe('Blackened armour shells', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['72.054', 1]]), step('edge-highlight', [['72.052']])]),
@@ -178,7 +179,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'xenos-tyranids', name: 'Tyranid Warrior', modelId: 'tyranid-warrior', category: 'Xenos', source: 'Derived from Squidmar method',
+    id: 'xenos-tyranids', name: 'Tyranid Warrior', modelId: 'tyranid-warrior', faction: 'Tyranids', category: 'Xenos', source: 'Derived from Squidmar method',
     description: 'Dark magenta carapace, pale organic flesh and turquoise bio-energy for a high-contrast swarm creature.',
     recipes: [
       recipe('Magenta chitin carapace', 'Carapace', [step('basecoat', [['70.812']]), step('layer', [['72.083']]), step('edge-highlight', [['72.083', 1], ['70.928', 1]])]),
@@ -190,7 +191,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'imperium-adepta-sororitas', name: 'Adepta Sororitas Battle Sister', modelId: 'adepta-sororitas', category: 'Imperium', source: 'Derived from Squidmar method',
+    id: 'imperium-adepta-sororitas', name: 'Adepta Sororitas Battle Sister', modelId: 'adepta-sororitas', faction: 'Adepta Sororitas', category: 'Imperium', source: 'Derived from Squidmar method',
     description: 'Black armour, deep red vestments and pale devotional details for a classic battle-sister scheme.',
     recipes: [
       recipe('Black power armour', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
@@ -203,7 +204,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'imperium-adeptus-custodes', name: 'Adeptus Custodes Guardian', modelId: 'adeptus-custodes', category: 'Imperium', source: 'Derived from Squidmar method',
+    id: 'imperium-adeptus-custodes', name: 'Adeptus Custodes Guardian', modelId: 'adeptus-custodes', faction: 'Adeptus Custodes', category: 'Imperium', source: 'Derived from Squidmar method',
     description: 'Rich true-metallic gold, crimson cloth and bright steel for a ceremonial guardian.',
     recipes: [
       recipe('Rich golden armour', 'Armour', [step('basecoat', [['72.060']]), step('layer', [['72.060', 1], ['72.056', 1]]), step('edge-highlight', [['72.056']])]),
@@ -215,7 +216,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'imperium-adeptus-mechanicus', name: 'Adeptus Mechanicus Ranger', modelId: 'adeptus-mechanicus', category: 'Imperium', source: 'Derived from Squidmar method',
+    id: 'imperium-adeptus-mechanicus', name: 'Adeptus Mechanicus Ranger', modelId: 'adeptus-mechanicus', faction: 'Adeptus Mechanicus', category: 'Imperium', source: 'Derived from Squidmar method',
     description: 'Mars-red robes, cold machinery and warm brass details for a cybernetic ranger.',
     recipes: [
       recipe('Mars-red coat and hood', 'Cloth', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('edge-highlight', [['72.106', 2], ['70.928', 1]])]),
@@ -227,7 +228,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'imperium-grey-knights', name: 'Grey Knight', modelId: 'grey-knight', category: 'Imperium', source: 'Derived from Squidmar method',
+    id: 'imperium-grey-knights', name: 'Grey Knight', modelId: 'grey-knight', faction: 'Grey Knights', category: 'Imperium', source: 'Derived from Squidmar method',
     description: 'Bright silver plate, restrained gold, ivory seals and turquoise psychic energy.',
     recipes: [
       recipe('Silver psychic armour', 'Armour', [step('basecoat', [['72.054']]), step('layer', [['72.054', 2], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
@@ -240,7 +241,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'imperium-imperial-agents', name: 'Imperial Field Agent', modelId: 'imperial-agent', category: 'Imperium', source: 'Derived from Squidmar method',
+    id: 'imperium-imperial-agents', name: 'Imperial Field Agent', modelId: 'imperial-agent', faction: 'Imperial Agents', category: 'Imperium', source: 'Derived from Squidmar method',
     description: 'Austere black coat, worn steel armour and crimson details for an independent Imperial operative.',
     recipes: [
       recipe('Black investigator coat', 'Coat', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
@@ -252,7 +253,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'imperium-imperial-knights', name: 'Imperial Knight', modelId: 'imperial-knight', category: 'Imperium', source: 'Derived from Squidmar method',
+    id: 'imperium-imperial-knights', name: 'Imperial Knight', modelId: 'imperial-knight', faction: 'Imperial Knights', category: 'Imperium', source: 'Derived from Squidmar method',
     description: 'Deep blue heraldic plate, ivory panels and warm gold trim over a cold mechanical frame.',
     recipes: [
       recipe('Deep blue armour panels', 'Armour', [step('basecoat', [['70.898']]), step('layer', [['72.024']]), step('edge-highlight', [['70.808']]), step('detail', [['70.858']], 'Smallest corners only')]),
@@ -264,7 +265,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'chaos-daemons', name: 'Lesser Warp Daemon', modelId: 'chaos-daemon', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'chaos-daemons', name: 'Lesser Warp Daemon', modelId: 'chaos-daemon', faction: 'Chaos Daemons', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Vivid crimson flesh, black ridged hide and pale bone for a readable undivided warp creature.',
     recipes: [
       recipe('Crimson daemonic flesh', 'Flesh', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('layer', [['72.106', 2], ['70.928', 1]]), step('edge-highlight', [['70.928']])]),
@@ -276,7 +277,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'chaos-knights', name: 'Chaos Knight', modelId: 'chaos-knight', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'chaos-knights', name: 'Chaos Knight', modelId: 'chaos-knight', faction: 'Chaos Knights', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Blackened renegade plate, corroded bronze and crimson banners over exposed machinery.',
     recipes: [
       recipe('Blackened armour plates', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
@@ -289,7 +290,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'chaos-death-guard', name: 'Death Guard Plague Marine', modelId: 'death-guard', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'chaos-death-guard', name: 'Death Guard Plague Marine', modelId: 'death-guard', faction: 'Death Guard', category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Diseased olive plate, corroded bronze and bruised mutations for a classic plague warrior.',
     recipes: [
       recipe('Diseased olive armour', 'Armour', [step('basecoat', [['70.894']]), step('layer', [['70.891']]), step('edge-highlight', [['72.030', 2], ['70.858', 1]])]),
@@ -302,7 +303,7 @@ export const SCHEME_PRESETS: SchemePreset[] = [
     ],
   },
   {
-    id: 'chaos-emperors-children', name: "Emperor's Children Sonic Warrior", modelId: 'emperors-children', category: 'Chaos', source: 'Derived from Squidmar method',
+    id: 'chaos-emperors-children', name: "Emperor's Children Sonic Warrior", modelId: 'emperors-children', faction: "Emperor's Children", category: 'Chaos', source: 'Derived from Squidmar method',
     description: 'Rich magenta armour, warm gold ornament and black sonic machinery for a decadent legionary.',
     recipes: [
       recipe('Magenta power armour', 'Armour', [step('basecoat', [['70.812']]), step('layer', [['72.083']]), step('edge-highlight', [['72.083', 1], ['70.928', 1]])]),
