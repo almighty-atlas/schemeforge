@@ -251,6 +251,69 @@ export const SCHEME_PRESETS: SchemePreset[] = [
       recipe('Red data lens', 'Details', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('detail', [['70.928']])]),
     ],
   },
+  {
+    id: 'imperium-imperial-knights', name: 'Imperial Knight', modelId: 'imperial-knight', category: 'Imperium', source: 'Derived from Squidmar method',
+    description: 'Deep blue heraldic plate, ivory panels and warm gold trim over a cold mechanical frame.',
+    recipes: [
+      recipe('Deep blue armour panels', 'Armour', [step('basecoat', [['70.898']]), step('layer', [['72.024']]), step('edge-highlight', [['70.808']]), step('detail', [['70.858']], 'Smallest corners only')]),
+      recipe('Warm gold trim', 'Trim', [step('basecoat', [['72.060']]), step('layer', [['72.060', 1], ['72.056', 1]]), step('edge-highlight', [['72.056']])]),
+      recipe('Cold mechanical frame', 'Machinery', [step('basecoat', [['70.950']]), step('layer', [['72.054']]), step('edge-highlight', [['72.052']])]),
+      recipe('Heavy arm weapons', 'Weapons', [step('basecoat', [['72.054']]), step('layer', [['72.054', 3], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
+      recipe('Ivory heraldry fields', 'Heraldry', [step('basecoat', [['70.771', 1], ['70.986', 1]]), step('layer', [['70.986']]), step('edge-highlight', [['70.918']])]),
+      recipe('Turquoise sensors', 'Details', [step('basecoat', [['70.898']]), step('layer', [['72.024']]), step('detail', [['70.808']]), step('detail', [['70.858']])]),
+    ],
+  },
+  {
+    id: 'chaos-daemons', name: 'Lesser Warp Daemon', modelId: 'chaos-daemon', category: 'Chaos', source: 'Derived from Squidmar method',
+    description: 'Vivid crimson flesh, black ridged hide and pale bone for a readable undivided warp creature.',
+    recipes: [
+      recipe('Crimson daemonic flesh', 'Flesh', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('layer', [['72.106', 2], ['70.928', 1]]), step('edge-highlight', [['70.928']])]),
+      recipe('Black ridged hide', 'Hide', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
+      recipe('Horns and bone plates', 'Bone', [step('basecoat', [['70.771']]), step('layer', [['70.923']]), step('layer', [['70.923', 2], ['70.845', 1]]), step('edge-highlight', [['70.918']])]),
+      recipe('Organic blade', 'Organic blade', [step('basecoat', [['70.812']]), step('layer', [['72.083']]), step('edge-highlight', [['72.083', 1], ['70.928', 1]])]),
+      recipe('Tattered dark cloth', 'Cloth', [step('basecoat', [['70.898']]), step('layer', [['70.898', 2], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
+      recipe('Warp-lit eyes', 'Eyes', [step('basecoat', [['72.024']]), step('layer', [['70.808']]), step('detail', [['70.858']])]),
+    ],
+  },
+  {
+    id: 'chaos-knights', name: 'Chaos Knight', modelId: 'chaos-knight', category: 'Chaos', source: 'Derived from Squidmar method',
+    description: 'Blackened renegade plate, corroded bronze and crimson banners over exposed machinery.',
+    recipes: [
+      recipe('Blackened armour plates', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
+      recipe('Corroded bronze trim', 'Trim', [step('basecoat', [['70.771']]), step('layer', [['72.060']]), step('edge-highlight', [['72.056']]), step('glaze', [['72.024']], 'Sparse verdigris staining', true)]),
+      recipe('Exposed machinery', 'Machinery', [step('basecoat', [['70.950']]), step('layer', [['72.054']]), step('edge-highlight', [['72.052']])]),
+      recipe('Brutal arm weapons', 'Weapons', [step('basecoat', [['72.054']]), step('layer', [['72.054', 3], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
+      recipe('Crimson banners', 'Cloth', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('edge-highlight', [['72.106', 2], ['70.928', 1]])]),
+      recipe('Bone trophies', 'Bone', [step('basecoat', [['70.771']]), step('layer', [['70.923']]), step('edge-highlight', [['70.918']])]),
+      recipe('Red cockpit glow', 'Details', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('detail', [['70.928']])]),
+    ],
+  },
+  {
+    id: 'chaos-death-guard', name: 'Death Guard Plague Marine', modelId: 'death-guard', category: 'Chaos', source: 'Derived from Squidmar method',
+    description: 'Diseased olive plate, corroded bronze and bruised mutations for a classic plague warrior.',
+    recipes: [
+      recipe('Diseased olive armour', 'Armour', [step('basecoat', [['70.894']]), step('layer', [['70.891']]), step('edge-highlight', [['72.030', 2], ['70.858', 1]])]),
+      recipe('Tarnished bronze trim', 'Trim', [step('basecoat', [['70.771']]), step('layer', [['72.060']]), step('edge-highlight', [['72.056']]), step('glaze', [['72.024']], 'Thin verdigris in recesses', true)]),
+      recipe('Rust and corrosion', 'Corrosion', [step('stipple', [['70.771']]), step('stipple', [['72.042']]), step('detail', [['72.054']], 'Small exposed metal chips')]),
+      recipe('Bruised mutations', 'Flesh', [step('basecoat', [['70.814', 1], ['72.099', 1]]), step('layer', [['72.099']]), step('glaze', [['72.083']], 'Thin around swollen joins'), step('edge-highlight', [['70.928']])]),
+      recipe('Rotten cloth', 'Cloth', [step('basecoat', [['70.771']]), step('layer', [['70.923']]), step('edge-highlight', [['70.918']])]),
+      recipe('Horn and trophies', 'Bone', [step('basecoat', [['70.771']]), step('layer', [['70.923']]), step('edge-highlight', [['70.918']])]),
+      recipe('Corroded weapons', 'Weapons', [step('basecoat', [['72.054']]), step('stipple', [['72.042']]), step('edge-highlight', [['72.052']])]),
+    ],
+  },
+  {
+    id: 'chaos-emperors-children', name: "Emperor's Children Sonic Warrior", modelId: 'emperors-children', category: 'Chaos', source: 'Derived from Squidmar method',
+    description: 'Rich magenta armour, warm gold ornament and black sonic machinery for a decadent legionary.',
+    recipes: [
+      recipe('Magenta power armour', 'Armour', [step('basecoat', [['70.812']]), step('layer', [['72.083']]), step('edge-highlight', [['72.083', 1], ['70.928', 1]])]),
+      recipe('Ornate gold trim', 'Trim', [step('basecoat', [['72.060']]), step('layer', [['72.060', 1], ['72.056', 1]]), step('edge-highlight', [['72.056']])]),
+      recipe('Black sonic projector', 'Weapon', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
+      recipe('Sonic machinery', 'Machinery', [step('basecoat', [['72.054']]), step('layer', [['72.054', 3], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
+      recipe('Ivory silks', 'Cloth', [step('basecoat', [['70.771', 1], ['70.986', 1]]), step('layer', [['70.986']]), step('edge-highlight', [['70.918']])]),
+      recipe('Dark leather', 'Leather', [step('basecoat', [['72.044']]), step('layer', [['72.042']]), step('edge-highlight', [['70.845']])]),
+      recipe('Turquoise eye lenses', 'Eyes', [step('basecoat', [['70.898']]), step('layer', [['72.024']]), step('detail', [['70.808']]), step('detail', [['70.858']])]),
+    ],
+  },
 ]
 
 export function instantiatePreset(preset: SchemePreset, paints: Paint[]): { scheme: Scheme; recipes: Recipe[]; paintIds: string[] } {

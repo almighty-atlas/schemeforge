@@ -1,4 +1,4 @@
-export type ModelRegion = 'armour' | 'trim' | 'weapon' | 'cloth' | 'leather' | 'bone' | 'flesh' | 'hair' | 'machinery' | 'energy' | 'details'
+export type ModelRegion = 'armour' | 'trim' | 'weapon' | 'cloth' | 'leather' | 'bone' | 'flesh' | 'hair' | 'machinery' | 'energy' | 'panels' | 'weathering' | 'details'
 export type MarkerPoint = { x: number; y: number }
 
 export interface ModelDefinition {
@@ -10,7 +10,7 @@ export interface ModelDefinition {
 }
 
 const points = (value: Partial<Record<ModelRegion, MarkerPoint[]>>): Record<ModelRegion, MarkerPoint[]> => ({
-  armour: [], trim: [], weapon: [], cloth: [], leather: [], bone: [], flesh: [], hair: [], machinery: [], energy: [], details: [], ...value,
+  armour: [], trim: [], weapon: [], cloth: [], leather: [], bone: [], flesh: [], hair: [], machinery: [], energy: [], panels: [], weathering: [], details: [], ...value,
 })
 
 export const MODEL_LIBRARY: Record<string, ModelDefinition> = {
@@ -164,6 +164,54 @@ export const MODEL_LIBRARY: Record<string, ModelDefinition> = {
       machinery: [{ x: 51, y: 12 }], details: [{ x: 47, y: 23 }, { x: 39, y: 29 }],
     }),
   },
+  'imperial-knight': {
+    id: 'imperial-knight', name: 'Imperial Knight', image: 'models/imperial-knight.webp',
+    alt: 'Original monochrome noble imperial combat walker archetype illustration',
+    points: points({
+      armour: [{ x: 26, y: 17 }, { x: 75, y: 18 }, { x: 53, y: 31 }, { x: 34, y: 66 }, { x: 66, y: 65 }],
+      trim: [{ x: 52, y: 27 }, { x: 26, y: 23 }, { x: 69, y: 73 }], weapon: [{ x: 12, y: 44 }, { x: 88, y: 57 }],
+      machinery: [{ x: 43, y: 36 }, { x: 30, y: 62 }, { x: 72, y: 60 }], panels: [{ x: 27, y: 16 }, { x: 53, y: 35 }, { x: 33, y: 77 }],
+      details: [{ x: 51, y: 22 }],
+    }),
+  },
+  'chaos-daemon': {
+    id: 'chaos-daemon', name: 'Lesser Warp Daemon', image: 'models/chaos-daemon.webp',
+    alt: 'Original monochrome horned lesser warp daemon archetype illustration',
+    points: points({
+      armour: [{ x: 35, y: 24 }, { x: 31, y: 65 }, { x: 68, y: 67 }], weapon: [{ x: 83, y: 51 }],
+      cloth: [{ x: 49, y: 59 }], bone: [{ x: 54, y: 10 }, { x: 63, y: 20 }, { x: 27, y: 53 }],
+      flesh: [{ x: 49, y: 38 }, { x: 23, y: 43 }, { x: 67, y: 42 }, { x: 33, y: 74 }], details: [{ x: 62, y: 22 }],
+    }),
+  },
+  'chaos-knight': {
+    id: 'chaos-knight', name: 'Chaos Knight', image: 'models/chaos-knight.webp',
+    alt: 'Original monochrome corrupted renegade combat walker archetype illustration',
+    points: points({
+      armour: [{ x: 50, y: 23 }, { x: 33, y: 17 }, { x: 74, y: 23 }, { x: 36, y: 64 }, { x: 66, y: 64 }],
+      trim: [{ x: 50, y: 27 }, { x: 73, y: 20 }, { x: 69, y: 75 }], weapon: [{ x: 13, y: 37 }, { x: 87, y: 58 }],
+      machinery: [{ x: 45, y: 34 }, { x: 35, y: 71 }, { x: 66, y: 71 }], cloth: [{ x: 25, y: 20 }, { x: 51, y: 60 }],
+      bone: [{ x: 48, y: 46 }, { x: 56, y: 54 }], details: [{ x: 52, y: 29 }],
+    }),
+  },
+  'death-guard': {
+    id: 'death-guard', name: 'Plague Marine', image: 'models/death-guard.webp',
+    alt: 'Original monochrome plague-corrupted heavy infantry archetype illustration',
+    points: points({
+      armour: [{ x: 51, y: 29 }, { x: 32, y: 21 }, { x: 68, y: 24 }, { x: 36, y: 73 }, { x: 68, y: 72 }],
+      trim: [{ x: 51, y: 25 }, { x: 34, y: 59 }, { x: 68, y: 61 }], weapon: [{ x: 20, y: 62 }, { x: 84, y: 42 }],
+      cloth: [{ x: 51, y: 62 }], bone: [{ x: 48, y: 10 }, { x: 25, y: 20 }], flesh: [{ x: 30, y: 31 }, { x: 68, y: 70 }],
+      weathering: [{ x: 39, y: 21 }, { x: 84, y: 42 }, { x: 38, y: 77 }], details: [{ x: 49, y: 17 }],
+    }),
+  },
+  'emperors-children': {
+    id: 'emperors-children', name: "Emperor's Children Sonic Warrior", image: 'models/emperors-children.webp',
+    alt: 'Original monochrome decadent sonic power-armoured warrior archetype illustration',
+    points: points({
+      armour: [{ x: 50, y: 26 }, { x: 37, y: 23 }, { x: 65, y: 24 }, { x: 36, y: 72 }, { x: 65, y: 72 }],
+      trim: [{ x: 49, y: 23 }, { x: 35, y: 59 }, { x: 65, y: 59 }], weapon: [{ x: 84, y: 27 }, { x: 17, y: 66 }],
+      cloth: [{ x: 51, y: 62 }, { x: 70, y: 57 }], leather: [{ x: 48, y: 40 }], machinery: [{ x: 73, y: 25 }], details: [{ x: 51, y: 14 }],
+    }),
+  },
 }
 
 export const regionForPart = (part = ''): ModelRegion | undefined => ({
@@ -173,4 +221,6 @@ export const regionForPart = (part = ''): ModelRegion | undefined => ({
   carapace: 'armour', chitin: 'armour', fatigues: 'cloth', coat: 'cloth', teeth: 'bone', talons: 'bone',
   'bio-weapon': 'weapon', energy: 'energy', glow: 'energy', machinery: 'machinery', skeleton: 'machinery',
   hair: 'hair', plume: 'cloth', seals: 'cloth',
+  heraldry: 'panels', panels: 'panels', corrosion: 'weathering', weathering: 'weathering', hide: 'armour',
+  horns: 'bone', claws: 'bone', 'organic blade': 'weapon', cables: 'machinery',
 }[part.toLowerCase()] as ModelRegion | undefined)
