@@ -22,6 +22,11 @@ The first approved visual reference is `public/models/chaos-legionary.webp`.
 - `terror-warrior.webp` — clawed terror specialist
 - `possessed.webp` — armour fused with controlled mutation
 - `chaos-terminator.webp` — massive heavy veteran
+- `space-marine.webp` — loyalist power-armoured line warrior
+- `astra-militarum.webp` — human trench infantry
+- `ork-raider.webp` — hulking alien scrap-raider
+- `necron-warrior.webp` — ancient skeletal machine
+- `tyranid-warrior.webp` — chitinous swarm creature
 
 New artwork should feel like another plate from this same illustrated field guide. Reuse the baseline image as the generation style reference; vary silhouette, pose, equipment and material balance to fit the archetype.
 

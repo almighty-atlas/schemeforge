@@ -1,4 +1,4 @@
-export type ModelRegion = 'armour' | 'trim' | 'weapon' | 'cloth' | 'leather' | 'bone' | 'flesh' | 'details'
+export type ModelRegion = 'armour' | 'trim' | 'weapon' | 'cloth' | 'leather' | 'bone' | 'flesh' | 'machinery' | 'energy' | 'details'
 export type MarkerPoint = { x: number; y: number }
 
 export interface ModelDefinition {
@@ -10,7 +10,7 @@ export interface ModelDefinition {
 }
 
 const points = (value: Partial<Record<ModelRegion, MarkerPoint[]>>): Record<ModelRegion, MarkerPoint[]> => ({
-  armour: [], trim: [], weapon: [], cloth: [], leather: [], bone: [], flesh: [], details: [], ...value,
+  armour: [], trim: [], weapon: [], cloth: [], leather: [], bone: [], flesh: [], machinery: [], energy: [], details: [], ...value,
 })
 
 export const MODEL_LIBRARY: Record<string, ModelDefinition> = {
@@ -69,10 +69,58 @@ export const MODEL_LIBRARY: Record<string, ModelDefinition> = {
       bone: [{ x: 35, y: 15 }, { x: 57, y: 31 }, { x: 81, y: 29 }], details: [{ x: 52, y: 18 }],
     }),
   },
+  'space-marine': {
+    id: 'space-marine', name: 'Space Marine', image: 'models/space-marine.webp',
+    alt: 'Original monochrome loyalist power-armoured warrior archetype illustration',
+    points: points({
+      armour: [{ x: 51, y: 29 }, { x: 37, y: 20 }, { x: 70, y: 22 }, { x: 32, y: 70 }, { x: 67, y: 70 }],
+      trim: [{ x: 66, y: 31 }, { x: 33, y: 58 }, { x: 66, y: 59 }], weapon: [{ x: 18, y: 25 }],
+      cloth: [{ x: 50, y: 61 }], leather: [{ x: 43, y: 42 }, { x: 62, y: 42 }], details: [{ x: 51, y: 15 }],
+    }),
+  },
+  'astra-militarum': {
+    id: 'astra-militarum', name: 'Astra Militarum Trooper', image: 'models/astra-militarum.webp',
+    alt: 'Original monochrome imperial trench infantry archetype illustration',
+    points: points({
+      armour: [{ x: 50, y: 25 }, { x: 36, y: 22 }, { x: 65, y: 23 }, { x: 51, y: 10 }],
+      weapon: [{ x: 70, y: 37 }], cloth: [{ x: 49, y: 63 }, { x: 56, y: 76 }],
+      leather: [{ x: 48, y: 43 }, { x: 38, y: 83 }], flesh: [{ x: 51, y: 15 }, { x: 67, y: 39 }], details: [{ x: 49, y: 28 }],
+    }),
+  },
+  'ork-raider': {
+    id: 'ork-raider', name: 'Ork Raider', image: 'models/ork-raider.webp',
+    alt: 'Original monochrome hulking alien scrap-raider archetype illustration',
+    points: points({
+      armour: [{ x: 30, y: 20 }, { x: 70, y: 68 }, { x: 28, y: 82 }], weapon: [{ x: 87, y: 26 }, { x: 23, y: 70 }],
+      cloth: [{ x: 65, y: 57 }, { x: 41, y: 57 }], leather: [{ x: 50, y: 40 }, { x: 25, y: 46 }],
+      bone: [{ x: 57, y: 22 }, { x: 52, y: 29 }], flesh: [{ x: 56, y: 18 }, { x: 24, y: 42 }, { x: 78, y: 32 }], details: [{ x: 59, y: 15 }],
+    }),
+  },
+  'necron-warrior': {
+    id: 'necron-warrior', name: 'Necron Warrior', image: 'models/necron-warrior.webp',
+    alt: 'Original monochrome ancient skeletal machine warrior archetype illustration',
+    points: points({
+      armour: [{ x: 49, y: 20 }, { x: 36, y: 18 }, { x: 63, y: 22 }, { x: 31, y: 72 }, { x: 66, y: 73 }],
+      trim: [{ x: 50, y: 14 }, { x: 56, y: 43 }], weapon: [{ x: 71, y: 49 }], cloth: [{ x: 48, y: 64 }],
+      machinery: [{ x: 51, y: 33 }, { x: 33, y: 47 }, { x: 64, y: 70 }],
+      energy: [{ x: 53, y: 24 }, { x: 88, y: 61 }, { x: 52, y: 13 }],
+    }),
+  },
+  'tyranid-warrior': {
+    id: 'tyranid-warrior', name: 'Tyranid Warrior', image: 'models/tyranid-warrior.webp',
+    alt: 'Original monochrome predatory chitinous swarm warrior archetype illustration',
+    points: points({
+      armour: [{ x: 62, y: 22 }, { x: 42, y: 30 }, { x: 13, y: 49 }, { x: 27, y: 70 }],
+      weapon: [{ x: 79, y: 58 }], bone: [{ x: 75, y: 29 }, { x: 26, y: 88 }, { x: 61, y: 88 }],
+      flesh: [{ x: 49, y: 42 }, { x: 68, y: 55 }, { x: 37, y: 53 }], details: [{ x: 69, y: 36 }, { x: 84, y: 57 }],
+    }),
+  },
 }
 
 export const regionForPart = (part = ''): ModelRegion | undefined => ({
   armour: 'armour', armor: 'armour', trim: 'trim', metal: 'weapon', steel: 'weapon', gold: 'trim', cloth: 'cloth',
   robes: 'cloth', leather: 'leather', bone: 'bone', parchment: 'cloth', skin: 'flesh', flesh: 'flesh',
   eyes: 'details', 'eyes & runes': 'details', details: 'details', weapon: 'weapon', weapons: 'weapon',
+  carapace: 'armour', chitin: 'armour', fatigues: 'cloth', coat: 'cloth', teeth: 'bone', talons: 'bone',
+  'bio-weapon': 'weapon', energy: 'energy', glow: 'energy', machinery: 'machinery', skeleton: 'machinery',
 }[part.toLowerCase()] as ModelRegion | undefined)
