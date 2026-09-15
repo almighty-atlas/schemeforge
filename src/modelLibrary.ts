@@ -1,4 +1,4 @@
-export type ModelRegion = 'armour' | 'trim' | 'weapon' | 'cloth' | 'leather' | 'bone' | 'flesh' | 'machinery' | 'energy' | 'details'
+export type ModelRegion = 'armour' | 'trim' | 'weapon' | 'cloth' | 'leather' | 'bone' | 'flesh' | 'hair' | 'machinery' | 'energy' | 'details'
 export type MarkerPoint = { x: number; y: number }
 
 export interface ModelDefinition {
@@ -10,7 +10,7 @@ export interface ModelDefinition {
 }
 
 const points = (value: Partial<Record<ModelRegion, MarkerPoint[]>>): Record<ModelRegion, MarkerPoint[]> => ({
-  armour: [], trim: [], weapon: [], cloth: [], leather: [], bone: [], flesh: [], machinery: [], energy: [], details: [], ...value,
+  armour: [], trim: [], weapon: [], cloth: [], leather: [], bone: [], flesh: [], hair: [], machinery: [], energy: [], details: [], ...value,
 })
 
 export const MODEL_LIBRARY: Record<string, ModelDefinition> = {
@@ -115,6 +115,55 @@ export const MODEL_LIBRARY: Record<string, ModelDefinition> = {
       flesh: [{ x: 49, y: 42 }, { x: 68, y: 55 }, { x: 37, y: 53 }], details: [{ x: 69, y: 36 }, { x: 84, y: 57 }],
     }),
   },
+  'adepta-sororitas': {
+    id: 'adepta-sororitas', name: 'Battle Sister', image: 'models/adepta-sororitas.webp',
+    alt: 'Original monochrome gothic battle sister archetype illustration',
+    points: points({
+      armour: [{ x: 50, y: 28 }, { x: 36, y: 23 }, { x: 64, y: 25 }, { x: 36, y: 70 }, { x: 65, y: 72 }],
+      trim: [{ x: 50, y: 24 }, { x: 35, y: 59 }, { x: 65, y: 59 }], weapon: [{ x: 79, y: 30 }, { x: 34, y: 45 }],
+      cloth: [{ x: 50, y: 64 }, { x: 28, y: 34 }], leather: [{ x: 45, y: 39 }], bone: [{ x: 50, y: 35 }],
+      flesh: [{ x: 50, y: 15 }], hair: [{ x: 48, y: 11 }], details: [{ x: 57, y: 25 }],
+    }),
+  },
+  'adeptus-custodes': {
+    id: 'adeptus-custodes', name: 'Custodian Guard', image: 'models/adeptus-custodes.webp',
+    alt: 'Original monochrome towering ceremonial guardian archetype illustration',
+    points: points({
+      armour: [{ x: 52, y: 28 }, { x: 38, y: 24 }, { x: 68, y: 23 }, { x: 36, y: 73 }, { x: 66, y: 72 }],
+      trim: [{ x: 51, y: 24 }, { x: 37, y: 62 }, { x: 66, y: 61 }], weapon: [{ x: 24, y: 20 }, { x: 24, y: 58 }],
+      cloth: [{ x: 50, y: 63 }, { x: 76, y: 55 }, { x: 47, y: 8 }], leather: [{ x: 48, y: 40 }, { x: 24, y: 48 }], details: [{ x: 51, y: 16 }],
+    }),
+  },
+  'adeptus-mechanicus': {
+    id: 'adeptus-mechanicus', name: 'Skitarii Ranger', image: 'models/adeptus-mechanicus.webp',
+    alt: 'Original monochrome hooded cybernetic ranger archetype illustration',
+    points: points({
+      armour: [{ x: 35, y: 24 }, { x: 58, y: 29 }, { x: 30, y: 76 }], weapon: [{ x: 68, y: 47 }],
+      cloth: [{ x: 50, y: 64 }, { x: 50, y: 15 }], leather: [{ x: 44, y: 43 }, { x: 55, y: 54 }],
+      machinery: [{ x: 30, y: 49 }, { x: 38, y: 81 }, { x: 67, y: 83 }], energy: [{ x: 49, y: 17 }, { x: 34, y: 10 }],
+      trim: [{ x: 52, y: 36 }, { x: 76, y: 51 }], details: [{ x: 49, y: 16 }],
+    }),
+  },
+  'grey-knight': {
+    id: 'grey-knight', name: 'Grey Knight', image: 'models/grey-knight.webp',
+    alt: 'Original monochrome psychic silver knight archetype illustration',
+    points: points({
+      armour: [{ x: 51, y: 28 }, { x: 36, y: 23 }, { x: 67, y: 22 }, { x: 35, y: 72 }, { x: 66, y: 72 }],
+      trim: [{ x: 50, y: 25 }, { x: 36, y: 60 }, { x: 67, y: 59 }], weapon: [{ x: 23, y: 20 }, { x: 23, y: 52 }],
+      cloth: [{ x: 50, y: 63 }, { x: 67, y: 31 }], leather: [{ x: 50, y: 42 }, { x: 23, y: 45 }],
+      machinery: [{ x: 71, y: 44 }], energy: [{ x: 23, y: 15 }], details: [{ x: 51, y: 16 }],
+    }),
+  },
+  'imperial-agent': {
+    id: 'imperial-agent', name: 'Imperial Field Agent', image: 'models/imperial-agent.webp',
+    alt: 'Original monochrome armoured imperial field investigator archetype illustration',
+    points: points({
+      armour: [{ x: 50, y: 28 }, { x: 36, y: 24 }, { x: 39, y: 69 }, { x: 61, y: 69 }],
+      weapon: [{ x: 14, y: 22 }, { x: 82, y: 64 }], cloth: [{ x: 49, y: 61 }, { x: 31, y: 59 }],
+      leather: [{ x: 49, y: 39 }, { x: 35, y: 44 }, { x: 64, y: 85 }], flesh: [{ x: 50, y: 12 }, { x: 20, y: 24 }],
+      machinery: [{ x: 51, y: 12 }], details: [{ x: 47, y: 23 }, { x: 39, y: 29 }],
+    }),
+  },
 }
 
 export const regionForPart = (part = ''): ModelRegion | undefined => ({
@@ -123,4 +172,5 @@ export const regionForPart = (part = ''): ModelRegion | undefined => ({
   eyes: 'details', 'eyes & runes': 'details', details: 'details', weapon: 'weapon', weapons: 'weapon',
   carapace: 'armour', chitin: 'armour', fatigues: 'cloth', coat: 'cloth', teeth: 'bone', talons: 'bone',
   'bio-weapon': 'weapon', energy: 'energy', glow: 'energy', machinery: 'machinery', skeleton: 'machinery',
+  hair: 'hair', plume: 'cloth', seals: 'cloth',
 }[part.toLowerCase()] as ModelRegion | undefined)

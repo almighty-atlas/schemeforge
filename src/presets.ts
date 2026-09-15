@@ -189,6 +189,68 @@ export const SCHEME_PRESETS: SchemePreset[] = [
       recipe('Turquoise bio-energy', 'Details', [step('basecoat', [['70.898']]), step('layer', [['72.024']]), step('detail', [['70.808']]), step('detail', [['70.858']])]),
     ],
   },
+  {
+    id: 'imperium-adepta-sororitas', name: 'Adepta Sororitas Battle Sister', modelId: 'adepta-sororitas', category: 'Imperium', source: 'Derived from Squidmar method',
+    description: 'Black armour, deep red vestments and pale devotional details for a classic battle-sister scheme.',
+    recipes: [
+      recipe('Black power armour', 'Armour', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
+      recipe('Cold steel trim', 'Trim', [step('basecoat', [['72.054']]), step('layer', [['72.054', 3], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
+      recipe('Crimson vestments', 'Cloth', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('edge-highlight', [['72.106', 2], ['70.928', 1]])]),
+      recipe('Ivory-white hair', 'Hair', [step('basecoat', [['70.986']]), step('layer', [['70.918']]), step('edge-highlight', [['70.928']])]),
+      recipe('Pale face', 'Skin', [step('basecoat', [['70.814', 1], ['70.845', 1]]), step('layer', [['72.099']]), step('edge-highlight', [['70.928']])]),
+      recipe('Gunmetal weapons', 'Weapon', [step('basecoat', [['70.950']]), step('layer', [['72.054']]), step('edge-highlight', [['72.052']])]),
+      recipe('Warm leather kit', 'Leather', [step('basecoat', [['72.044']]), step('layer', [['72.042']]), step('edge-highlight', [['70.845']])]),
+    ],
+  },
+  {
+    id: 'imperium-adeptus-custodes', name: 'Adeptus Custodes Guardian', modelId: 'adeptus-custodes', category: 'Imperium', source: 'Derived from Squidmar method',
+    description: 'Rich true-metallic gold, crimson cloth and bright steel for a ceremonial guardian.',
+    recipes: [
+      recipe('Rich golden armour', 'Armour', [step('basecoat', [['72.060']]), step('layer', [['72.060', 1], ['72.056', 1]]), step('edge-highlight', [['72.056']])]),
+      recipe('Bright gold trim', 'Trim', [step('basecoat', [['72.060']]), step('layer', [['72.056']]), step('edge-highlight', [['72.056', 2], ['72.052', 1]], 'Use sparingly on the sharpest details')]),
+      recipe('Crimson robes and plume', 'Cloth', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('edge-highlight', [['72.106', 2], ['70.928', 1]])]),
+      recipe('Guardian spear', 'Weapon', [step('basecoat', [['72.054']]), step('layer', [['72.054', 3], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
+      recipe('Dark leather bindings', 'Leather', [step('basecoat', [['72.044']]), step('layer', [['72.042']]), step('edge-highlight', [['70.845']])]),
+      recipe('Turquoise eye lenses', 'Eyes', [step('basecoat', [['70.898']]), step('layer', [['72.024']]), step('detail', [['70.808']]), step('detail', [['70.858']])]),
+    ],
+  },
+  {
+    id: 'imperium-adeptus-mechanicus', name: 'Adeptus Mechanicus Ranger', modelId: 'adeptus-mechanicus', category: 'Imperium', source: 'Derived from Squidmar method',
+    description: 'Mars-red robes, cold machinery and warm brass details for a cybernetic ranger.',
+    recipes: [
+      recipe('Mars-red coat and hood', 'Cloth', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('edge-highlight', [['72.106', 2], ['70.928', 1]])]),
+      recipe('Cold cybernetics', 'Machinery', [step('basecoat', [['72.054']]), step('layer', [['72.054', 3], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
+      recipe('Warm brass armour', 'Armour', [step('basecoat', [['72.060']]), step('layer', [['72.060', 1], ['72.056', 1]]), step('edge-highlight', [['72.056']])]),
+      recipe('Arcane rifle', 'Weapon', [step('basecoat', [['70.950']]), step('layer', [['72.054']]), step('edge-highlight', [['72.052']])]),
+      recipe('Leather straps', 'Leather', [step('basecoat', [['72.044']]), step('layer', [['72.042']]), step('edge-highlight', [['70.845']])]),
+      recipe('Turquoise optics', 'Energy', [step('basecoat', [['70.898']]), step('layer', [['72.024']]), step('layer', [['70.808']]), step('detail', [['70.858']])]),
+    ],
+  },
+  {
+    id: 'imperium-grey-knights', name: 'Grey Knight', modelId: 'grey-knight', category: 'Imperium', source: 'Derived from Squidmar method',
+    description: 'Bright silver plate, restrained gold, ivory seals and turquoise psychic energy.',
+    recipes: [
+      recipe('Silver psychic armour', 'Armour', [step('basecoat', [['72.054']]), step('layer', [['72.054', 2], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
+      recipe('Restrained gold trim', 'Trim', [step('basecoat', [['72.060']]), step('layer', [['72.060', 1], ['72.056', 1]]), step('edge-highlight', [['72.056']])]),
+      recipe('Force halberd', 'Weapon', [step('basecoat', [['70.898']]), step('layer', [['72.054']]), step('edge-highlight', [['72.052']])]),
+      recipe('Psychic blade glow', 'Energy', [step('basecoat', [['70.898']]), step('layer', [['72.024']]), step('layer', [['70.808']]), step('detail', [['70.858']])]),
+      recipe('Ivory tabard and seals', 'Cloth', [step('basecoat', [['70.771', 1], ['70.986', 1]]), step('layer', [['70.986']]), step('edge-highlight', [['70.918']])]),
+      recipe('Black weapon machinery', 'Machinery', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
+      recipe('Dark leather', 'Leather', [step('basecoat', [['72.044']]), step('layer', [['72.042']]), step('edge-highlight', [['70.845']])]),
+    ],
+  },
+  {
+    id: 'imperium-imperial-agents', name: 'Imperial Field Agent', modelId: 'imperial-agent', category: 'Imperium', source: 'Derived from Squidmar method',
+    description: 'Austere black coat, worn steel armour and crimson details for an independent Imperial operative.',
+    recipes: [
+      recipe('Black investigator coat', 'Coat', [step('basecoat', [['70.950']]), step('layer', [['70.950', 3], ['70.986', 1]]), step('edge-highlight', [['70.986']])]),
+      recipe('Worn steel armour', 'Armour', [step('basecoat', [['72.054']]), step('layer', [['72.054', 3], ['72.052', 1]]), step('edge-highlight', [['72.052']])]),
+      recipe('Pistol and powered blade', 'Weapon', [step('basecoat', [['70.950']]), step('layer', [['72.054']]), step('edge-highlight', [['72.052']])]),
+      recipe('Warm leather harness', 'Leather', [step('basecoat', [['72.044']]), step('layer', [['72.042']]), step('edge-highlight', [['70.845']])]),
+      recipe('Weathered skin', 'Skin', [step('basecoat', [['70.814', 1], ['70.845', 1]]), step('layer', [['70.845']]), step('edge-highlight', [['70.928']])]),
+      recipe('Red data lens', 'Details', [step('basecoat', [['72.011']]), step('layer', [['72.106']]), step('detail', [['70.928']])]),
+    ],
+  },
 ]
 
 export function instantiatePreset(preset: SchemePreset, paints: Paint[]): { scheme: Scheme; recipes: Recipe[]; paintIds: string[] } {

@@ -8,11 +8,11 @@ Status reviewed on 2026-09-15 against the official Warhammer 40,000 army overvie
 
 - [x] Space Marines — power-armoured line warrior
 - [x] Astra Militarum — trench infantry trooper
-- [ ] Adepta Sororitas
-- [ ] Adeptus Custodes
-- [ ] Adeptus Mechanicus
-- [ ] Grey Knights
-- [ ] Imperial Agents
+- [x] Adepta Sororitas — gothic battle sister
+- [x] Adeptus Custodes — ceremonial guardian
+- [x] Adeptus Mechanicus — cybernetic ranger
+- [x] Grey Knights — psychic silver knight
+- [x] Imperial Agents — armoured field agent
 - [ ] Imperial Knights
 
 Chapter-specific Space Marine schemes can reuse the Space Marine artwork initially. Distinct chapter units may be added after the primary-faction pass.
