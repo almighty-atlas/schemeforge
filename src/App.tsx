@@ -232,7 +232,7 @@ function SchemeWorkspace({ scheme, recipes, paints, owned, onEditScheme, onAddRe
         <div><strong>{usedIds.length}</strong><span>Paints needed</span></div>
         <div className={missing.length ? 'warning' : ''}><strong>{missing.length}</strong><span>Missing from inventory</span></div>
       </div>
-      {scheme.slug.startsWith('csm-') && <ModelMap recipes={recipes} paintsById={paintsById} />}
+      {(scheme.modelId || scheme.slug.startsWith('csm-')) && <ModelMap modelId={scheme.modelId ?? 'chaos-legionary'} recipes={recipes} paintsById={paintsById} />}
       {recipes.length ? <div className="recipe-grid">{recipes.map((recipe, index) => <RecipeCard key={recipe.id} recipe={recipe} paintsById={paintsById} owned={owned} onEdit={() => onEditRecipe(recipe)} onDuplicate={() => onDuplicate(recipe)} onDelete={() => onDeleteRecipe(recipe)} onMove={(delta) => onMove(recipe, delta)} canUp={index > 0} canDown={index < recipes.length - 1} />)}</div> : (
         <div className="empty large"><span className="empty-glyph">◇</span><h2>Build the first recipe</h2><p>Split the scheme into useful model areas such as armour, cloth, metal and bases.</p><button className="button primary" onClick={onAddRecipe}>Create a recipe</button></div>
       )}

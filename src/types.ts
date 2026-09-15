@@ -49,6 +49,7 @@ export interface Scheme {
   id: string
   slug: string
   name: string
+  modelId?: string
   notes?: string
   createdAt: string
   updatedAt: string

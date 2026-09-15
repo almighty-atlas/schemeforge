@@ -14,6 +14,17 @@ This document is the source of truth for all model-map illustrations.
 
 The first approved visual reference is `public/models/chaos-legionary.webp`.
 
+## Approved model library
+
+- `chaos-legionary.webp` — baseline legionary
+- `dark-apostle.webp` — armoured preacher
+- `chaos-cultist.webp` — human-scale cultist
+- `terror-warrior.webp` — clawed terror specialist
+- `possessed.webp` — armour fused with controlled mutation
+- `chaos-terminator.webp` — massive heavy veteran
+
+New artwork should feel like another plate from this same illustrated field guide. Reuse the baseline image as the generation style reference; vary silhouette, pose, equipment and material balance to fit the archetype.
+
 ## Originality boundary
 
 Reference photos may be used to understand the broad visual language of a miniature category, but output must not trace or reproduce a commercial miniature. Change the pose, proportions, armour construction, helmet, weapons and arrangement of details. Do not use faction insignia, named symbols or exact proprietary patterns.
