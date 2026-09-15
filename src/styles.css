@@ -131,9 +131,17 @@ main { min-height: 100vh; margin-left: 268px; padding: 58px clamp(28px, 5vw, 76p
 .empty-glyph { display: block; margin-bottom: 14px; color: var(--ember); font-size: 42px; }
 .welcome { padding-top: 13vh !important; border: 0 !important; background: radial-gradient(circle at 50% 20%, #64351c26, transparent 45%) !important; }
 .welcome .text-button { display: block; margin: 15px auto; }
-.preset-toolbar { display: flex; max-width: 1160px; flex-wrap: wrap; gap: 7px; margin: 0 auto 16px; }
+.preset-filters { max-width: 1160px; margin: 0 auto 18px; border: 1px solid var(--line); border-radius: 12px; padding: 14px; background: var(--panel); }
+.preset-toolbar { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 12px; }
+.preset-filter-fields { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(180px, 280px); gap: 9px; }
+.preset-filter-fields label { min-width: 0; }
+.preset-filter-fields label > span { display: block; margin: 0 0 5px; color: var(--faint); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.preset-filter-fields label input, .preset-filter-fields label select { margin-top: 0; }
+.preset-filter-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; color: var(--faint); font-size: 10px; }
+.preset-filter-summary .text-button { flex: 0 0 auto; font-size: 10px; }
 .preset-grid { display: grid; max-width: 1160px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 auto; }
 .preset-card { display: flex; min-width: 0; flex-direction: column; gap: 16px; border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: var(--panel); }
+.preset-card-meta { display: flex; flex-wrap: wrap; gap: 6px; }
 .preset-card h2 { margin: 10px 0 6px; color: var(--cream); font-family: 'Fraunces', Georgia, serif; font-size: 21px; }
 .preset-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
 .preset-card ul { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; }
@@ -141,6 +149,7 @@ main { min-height: 100vh; margin-left: 268px; padding: 58px clamp(28px, 5vw, 76p
 .preset-card li span, .preset-card > small, .preset-source { color: var(--faint); font-size: 9px; }
 .preset-card footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: auto; }
 .preset-card footer div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.preset-empty { max-width: 1160px; }
 .source-note { max-width: 1160px; margin: 16px auto 0; color: var(--faint); font-size: 9px; line-height: 1.5; }
 .catalogue-tools { display: grid; max-width: 1160px; grid-template-columns: minmax(220px, 1fr) 190px 150px auto; gap: 9px; margin: 0 auto; }
 input, textarea, select { width: 100%; border: 1px solid var(--line); border-radius: 7px; padding: 9px 10px; color: var(--cream); background: #171411; }
@@ -248,6 +257,8 @@ label input, label textarea, label select { display: block; margin-top: 6px; fon
   .model-map-content { padding: 22px 17px; }
   .model-map-recipes { grid-template-columns: 1fr; }
   .paint-grid { grid-template-columns: 1fr; }
+  .preset-filters { padding: 12px; }
+  .preset-filter-fields { grid-template-columns: 1fr; }
   .preset-card footer { align-items: stretch; flex-direction: column; }
   .preset-card footer div { justify-content: stretch; }
   .preset-card footer .button { flex: 1; }

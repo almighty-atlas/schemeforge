@@ -283,19 +283,39 @@ function Catalogue({ paints, owned, mode, onToggle }: { paints: Paint[]; owned: 
 
 function PresetLibrary({ onAdd }: { onAdd: (preset: SchemePreset, addPaints: boolean) => void }) {
   const [category, setCategory] = useState<'all' | SchemePreset['category']>('all')
-  const shown = SCHEME_PRESETS.filter((preset) => category === 'all' || preset.category === category)
+  const [faction, setFaction] = useState('all')
+  const [query, setQuery] = useState('')
   const categories: Array<'all' | SchemePreset['category']> = ['all', ...new Set(SCHEME_PRESETS.map((preset) => preset.category))]
+  const factions = [...new Set(SCHEME_PRESETS
+    .filter((preset) => preset.faction && (category === 'all' || preset.category === category))
+    .map((preset) => preset.faction!))].sort((a, b) => a.localeCompare(b))
+  const normalizedQuery = query.trim().toLowerCase()
+  const shown = SCHEME_PRESETS.filter((preset) => {
+    if (category !== 'all' && preset.category !== category) return false
+    if (faction !== 'all' && preset.faction !== faction) return false
+    if (!normalizedQuery) return true
+    const searchable = [preset.name, preset.faction, preset.description, ...preset.recipes.flatMap((item) => [item.name, item.part])].filter(Boolean).join(' ').toLowerCase()
+    return searchable.includes(normalizedQuery)
+  })
+  const clearFilters = () => { setCategory('all'); setFaction('all'); setQuery('') }
   return <>
-    <header className="workspace-head"><div><span className="eyebrow">Guided recipes</span><h1>Squidmar presets</h1><p>Ready-to-use recipes built around the Essential, Dark Future and Fantasy sets. Add one as an editable scheme.</p></div></header>
-    <section className="preset-toolbar" aria-label="Preset filters">
-      {categories.map((item) => <button key={item} className={`button small ${category === item ? 'primary' : 'secondary'}`} onClick={() => setCategory(item)}>{item === 'all' ? 'All presets' : item}</button>)}
+    <header className="workspace-head"><div><span className="eyebrow">Recipes & factions</span><h1>Scheme library</h1><p>Browse material recipes and complete faction schemes built around the Essential, Dark Future and Fantasy sets.</p></div></header>
+    <section className="preset-filters" aria-label="Scheme library filters">
+      <div className="preset-toolbar" role="group" aria-label="Alliance">
+        {categories.map((item) => <button key={item} className={`button small ${category === item ? 'primary' : 'secondary'}`} onClick={() => { setCategory(item); setFaction('all') }}>{item === 'all' ? 'All' : item === 'Material library' ? 'Materials' : item}</button>)}
+      </div>
+      <div className="preset-filter-fields">
+        <label><span>Search</span><input className="search" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Name, unit or model area…" /></label>
+        <label><span>Faction</span><select value={faction} onChange={(event) => setFaction(event.target.value)} disabled={!factions.length}><option value="all">All factions</option>{factions.map((item) => <option key={item}>{item}</option>)}</select></label>
+      </div>
+      <div className="preset-filter-summary"><span>{shown.length} {shown.length === 1 ? 'preset' : 'presets'}</span>{(category !== 'all' || faction !== 'all' || query) && <button className="text-button" onClick={clearFilters}>Clear filters</button>}</div>
     </section>
-    <div className="preset-grid">{shown.map((preset) => <article className="preset-card" key={preset.id}>
-      <div><span className="pill accent">{preset.category}</span><h2>{preset.name}</h2><p>{preset.description}</p></div>
+    {shown.length ? <div className="preset-grid">{shown.map((preset) => <article className="preset-card" key={preset.id}>
+      <div><div className="preset-card-meta"><span className="pill accent">{preset.category}</span>{preset.faction && <span className="pill">{preset.faction}</span>}</div><h2>{preset.name}</h2><p>{preset.description}</p></div>
       <ul>{preset.recipes.slice(0, 5).map((item) => <li key={item.name}>{item.name}<span>{item.part}</span></li>)}</ul>
       {preset.recipes.length > 5 && <small>+ {preset.recipes.length - 5} more recipes</small>}
       <footer><span className="preset-source">{preset.source}</span><div><button className="button secondary small" onClick={() => onAdd(preset, false)}>Add scheme</button><button className="button primary small" onClick={() => onAdd(preset, true)}>Add + mark paints owned</button></div></footer>
-    </article>)}</div>
+    </article>)}</div> : <div className="empty large preset-empty"><h2>No matching presets</h2><p>Try another faction, alliance or a broader search.</p><button className="button secondary" onClick={clearFilters}>Clear filters</button></div>}
     <p className="source-note">Video-based recipes follow Squidmar’s stated mixes. Faction presets are practical adaptations of those methods, not official Vallejo or Games Workshop painting guides.</p>
   </>
 }
@@ -362,7 +382,7 @@ export function App() {
         <div className="brand"><span className="brand-mark">◇</span><div><strong>Schemeforge</strong><small>Miniature paint planner</small></div><button className="mobile-close" onClick={() => document.querySelector('.sidebar')?.classList.remove('open')} aria-label="Close navigation">×</button></div>
         <nav className="main-nav" aria-label="Workspace">
           <button className={view === 'schemes' ? 'active' : ''} onClick={() => { setView('schemes'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>◇</Icon>Schemes<span>{workspace.schemes.length}</span></button>
-          <button className={view === 'presets' ? 'active' : ''} onClick={() => { setView('presets'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>✦</Icon>Recipe presets<span>{SCHEME_PRESETS.length}</span></button>
+          <button className={view === 'presets' ? 'active' : ''} onClick={() => { setView('presets'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>✦</Icon>Scheme library<span>{SCHEME_PRESETS.length}</span></button>
           <button className={view === 'catalogue' ? 'active' : ''} onClick={() => { setView('catalogue'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>▦</Icon>Paint library<span>{paints.length || '…'}</span></button>
           <button className={view === 'inventory' ? 'active' : ''} onClick={() => { setView('inventory'); document.querySelector('.sidebar')?.classList.remove('open') }}><Icon>✓</Icon>My paints<span>{owned.size}</span></button>
         </nav>
